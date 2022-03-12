@@ -1,0 +1,28 @@
+<style>	
+	body{
+		background-image:url("greeks.jpg");height:100%;
+		background-position:center;background-repeat:no-repeat;background-size:cover;
+	}
+	.image-fix{
+		width:200px;
+		height:200px;
+		display:inline-block;
+		background-position:center;
+		background-repeat:no-repeat;
+		background-size:cover;
+		position:relative;
+		}
+	</style>
+
+    <h1 style="font-family:calibri"> Philosophical Quote</h1>
+	
+	<form id="login_form" method="post" action="{% url 'rango:login' %}" style="color:white">
+    <!-- {% csrf_token %} -->
+		<input type="text" name="quote" value="" placeholder="Custom text, leave blank to generate" size="50" style="height:40px;"/>
+    <br /><br />
+		<input type="text" name="picture" value="" placeholder="Custom image, leave blank to generate" size="50" style="height:40px;"/>
+    <br /><br />
+    <input type="submit" value="Generate" />
+</form>
+
+<button type="button" style="position:absolute;bottom:0px;width:4%;margin-left:48%;">Go back</button>
