@@ -1,16 +1,43 @@
-{% extends 'rango/base.html' %}
+<!-- {% extends 'rango/base.html' %}
 {% load staticfiles %}
 
 {% block title_block %}
     About Rango
 {% endblock %}
 
-{% block body_block %}
-    <h1>Rango says</h1>
-        here is the about page. <br />
-        <strong>This tutorial has been put together by {{ boldmessage }}</strong><br />
-        Visits: {{ visits}}<br />
+{% block body_block %} -->
 
-    <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
-    <img src="{{MEDIA_URL}}cat.jpg" alt="Picture of a cat"/>
-{% endblock %}
+<style>	
+	body{
+		background-image:url("forest.jpg");height:100%;
+		background-position:center;background-repeat:no-repeat;background-size:cover;
+	}
+	.image-fix{
+		width:200px;
+		height:200px;
+		display:inline-block;
+		background-position:center;
+		background-repeat:no-repeat;
+		background-size:cover;
+		position:relative;
+		}
+	</style>
+
+    <div style="margin-left:auto;margin-right:auto;width:30%">
+	<h1 style="color:white;font-family:calibri;text-align:center">Motor Torpedo Quote PT-109</h1>
+	<h2 style="font-size:16;color:white;font-family:calibri;text-align:center">"The UK's most innovative creation tool" - Anonymous Quote</h2>
+	
+	<h3 style="font-size:20;color:white;text-align:center;">About us</h3>
+	<p style="color:white;text-align:center;font-family:calibri">We make funny quotes waffle waffle 
+	example example example example example</h3>
+
+</div>
+
+<div style="margin-left:auto;margin-right:auto;width:616px">
+	<img src="jimmy.jpg" style="width:200px;height:200px;">
+	<img src="ponder.jpg" style="width:200px;height:200px;">
+	<img src="inspiration.jpg" style="width:200px;height:200px;"`>
+</div>
+
+	<button type="button" style="position:absolute;bottom:0px;width:4%;margin-left:48%;">Go back</button>
+<!-- {% endblock %} -->
