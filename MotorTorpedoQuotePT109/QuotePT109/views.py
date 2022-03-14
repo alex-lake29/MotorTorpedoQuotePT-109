@@ -3,7 +3,21 @@ from django.http import HttpResponse
 def index(request):
     response = render(request, 'QuotePT109/index.html')
     return response
-    return HttpResponse("Motor Torpedo Quote PT-109")
 
+def generator(request):
+    response = render(request, 'QuotePT109/generator.html')
+    return response
+
+def login(request):
+    response = render(request, 'QuotePT109/login.html')
+    return response
+
+def login(request):
+    response = render(request, 'QuotePT109/about.html')
+    return response
+
+def login(request):
+    response = render(request, 'QuotePT109/generated.html')
+    return response
 
 # Create your views here.
