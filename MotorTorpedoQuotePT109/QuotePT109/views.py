@@ -12,11 +12,11 @@ def login(request):
     response = render(request, 'QuotePT109/login.html')
     return response
 
-def login(request):
+def about(request):
     response = render(request, 'QuotePT109/about.html')
     return response
 
-def login(request):
+def generated(request):
     response = render(request, 'QuotePT109/generated.html')
     return response
 
