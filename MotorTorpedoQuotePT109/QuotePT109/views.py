@@ -10,9 +10,12 @@ def index(request):
     context_dict['viewed_pages'] = page_list_views
     return render(request, 'QuotePT109/index.html', context=context_dict)
     
-
 def generator(request):
     response = render(request, 'QuotePT109/generator.html')
+    return response
+
+def generatorC(request):
+    response = render(request, 'QuotePT109/generatorC.html')
     return response
 
 def login(request):

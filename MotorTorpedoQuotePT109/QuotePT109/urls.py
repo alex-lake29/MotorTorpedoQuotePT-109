@@ -6,6 +6,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('generator/', views.preGenerator, name='generator'),
     path('login/', views.login, name='login'),
-    path('generator/choice/', views.generator, name='generatorchoice'),
+    path('generator/comedic/', views.generatorC, name='generatorC'),
     path('generator/generated/', views.generated, name='generated'),
 ]
