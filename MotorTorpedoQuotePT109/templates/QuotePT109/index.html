@@ -20,8 +20,8 @@
 		<div style="float:left;width:30%;">
         <h3 style="color:white;font-size:13;">Most Popular:</h3>
 		<p style="color:white;font-size:12;">
-            {% if pages %}
-                {% for page in pages %}
+            {% if liked_pages %}
+                {% for page in liked_pages %}
                 <li>
                     <a href="{{ page.url }}">{{ page.title }}</a>
                 </li>
@@ -32,10 +32,18 @@
 		</p>
 
         </ul> -->
-         <h3 style="color:white;font-size:13">Newest Quotes:</h3>
-		 <p style="color:white;font-size:12;">Example text Example text Example text Example text Example text
-		Example text Example text Example text Example text Example text 
-		Example text Example text Example text Example text Example text </p>
+         <h3 style="color:white;font-size:13">Most Viewed Quotes:</h3>
+		 <p style="color:white;font-size:12;">
+			{% if viewed_pages %}
+                {% for page in viewed_pages %}
+                <li>
+                    <a href="{{ page.url }}">{{ page.title }}</a>
+                </li>
+                {% endfor %}
+            {% else %}
+                <strong>There are no pages present.</strong>
+            {% endif %}
+		 </p>
 		</div>
 	<div style="float:right;width:70%;text-align:left;">
 		<h1 style="color:white;margin-left:30px">Motor Torpedo Quote PT-109</h1>

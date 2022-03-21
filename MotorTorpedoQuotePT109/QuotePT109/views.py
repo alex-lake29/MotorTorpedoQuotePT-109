@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from QuotePT109.models import Category, Page
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
-    page_list = Page.objects.order_by('-likes')[:5]
+    page_list_likes = Page.objects.order_by('-likes')[:5]
+    page_list_views = Page.objects.order_by('views')[:5]
     context_dict={}
-    context_dict['pages'] = page_list
-    context_dict['categories'] = category_list
+    context_dict['liked_pages'] = page_list_likes
+    context_dict['viewed_pages'] = page_list_views
     return render(request, 'QuotePT109/index.html', context=context_dict)
     
 
