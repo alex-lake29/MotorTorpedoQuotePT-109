@@ -7,7 +7,7 @@ from QuotePT109.models import Prompt, Page, Category
 
 def populate():
     comedic_prompts = [
-        {'prompt': 'What do you call a _ without a _? a _'},
+        {'prompt': 'What do you call a _ without a _? a _', 'number':'1'},
         {'prompt': 'How many _ does it take to fix a _? _'},
         {'prompt': 'What does the _ say to the _? You are a _'},
         {'prompt': 'Did you hear about the _ who ran into the _? He _'}
@@ -32,18 +32,18 @@ def populate():
     ]
 
     inspiring_pages = [
-        {'title': 'Official Python Tutorial','url':'http://docs.python.org/3/tutorial/','views': 31},
-        {'title':'How to Think like a Computer Scientist','url':'http://www.greenteapress.com/thinkpython/','views': 47},
-        {'title':'Learn Python in 10 Minutes','url':'http://www.korokithakis.net/tutorials/python/','views': 98} ]
+        {'title': 'Official Python Tutorial','url':'http://docs.python.org/3/tutorial/','views': 31,'likes':24},
+        {'title':'How to Think like a Computer Scientist','url':'http://www.greenteapress.com/thinkpython/','views': 47,'likes':52},
+        {'title':'Learn Python in 10 Minutes','url':'http://www.korokithakis.net/tutorials/python/','views': 98,'likes':12} ]
 
     philisophical_pages = [
-        {'title':'Official Django Tutorial','url':'https://docs.djangoproject.com/en/2.1/intro/tutorial01/','views': 120},
-        {'title':'Django Rocks','url':'http://www.djangorocks.com/','views': 135},
-        {'title':'How to Tango with Django','url':'http://www.tangowithdjango.com/','views': 78} ]
+        {'title':'Official Django Tutorial','url':'https://docs.djangoproject.com/en/2.1/intro/tutorial01/','views': 120,'likes':13},
+        {'title':'Django Rocks','url':'http://www.djangorocks.com/','views': 135,'likes':52},
+        {'title':'How to Tango with Django','url':'http://www.tangowithdjango.com/','views': 78,'likes':33} ]
     
     comedic_pages = [
-        {'title':'Bottle','url':'http://bottlepy.org/docs/dev/','views': 16},
-        {'title':'Flask','url':'http://flask.pocoo.org','views': 45} ]
+        {'title':'Bottle','url':'http://bottlepy.org/docs/dev/','views': 16,'likes':11},
+        {'title':'Flask','url':'http://flask.pocoo.org','views': 45,'likes':73} ]
 
     cats = {'Inspiring': {'pages': inspiring_pages, 'likes': 64, 'views': 128},
             'Philisophical': {'pages': philisophical_pages, 'likes': 32, 'views': 64},
@@ -52,31 +52,32 @@ def populate():
     for cat, cat_data in cats.items():
         c = add_cat(cat, cat_data['views'], cat_data['likes'])
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'], p['views'])
+            add_page(c, p['title'], p['url'], p['views'], p['likes'])
         
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
             print(f'- {c}: {p}')
 
-    for prompt in comedic_prompts.items():
-         c = add_comedic_prompt(prompt)
+    # for prompt in comedic_prompts.items():
+    #      cp = add_comedic_prompt(prompt)
 
 def add_cat(name, views, likes):
     c = Category.objects.get_or_create(name=name, views=views, likes=likes)[0]
     c.save()
     return c
 
-def add_page(cat, title, url, views):
+def add_page(cat, title, url, views, likes):
     p = Page.objects.get_or_create(category=cat, title=title)[0]
     p.url=url
     p.views=views
+    p.likes=likes
     p.save()
     return p
 
-def add_comedic_prompt(prompt):
-    c = Category.objects.get_or_create(prompt=prompt)[0]
-    c.save()
-    return c
+# def add_comedic_prompt(prompt):
+#     cp = Category.objects.get_or_create(prompt=prompt)[0]
+#     cp.save()
+#     return cp
 
 if __name__ == '__main__':
     print('Starting QuotePT109 population script...')
