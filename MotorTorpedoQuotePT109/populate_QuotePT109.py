@@ -1,22 +1,24 @@
 import os
+
+from sympy import I
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','MotorTorpedoQuotePT109.settings')
 
 import django
 django.setup()
-from QuotePT109.models import Prompt, Page, Category
+from QuotePT109.models import Prompt, Page, Category, Noun
 
 def populate():
     comedic_prompts = [
-        {'prompt': 'What do you call a _ without a _? a _', 'number':'1'},
-        {'prompt': 'How many _ does it take to fix a _? _'},
-        {'prompt': 'What does the _ say to the _? You are a _'},
-        {'prompt': 'Did you hear about the _ who ran into the _? He _'}
+        'What do you call a _ without a _? a _',
+        'How many _ does it take to fix a _? _',
+        'What does the _ say to the _? You are a _',
+        'Did you hear about the _ who ran into the _? He _'
     ]
     inspiring_prompts = [
-        {'prompt': 'There is no such thing as _ without _'},
-        {'prompt': '_ can be achieved only with _'},
-        {'prompt': 'One cannot _ without a good amount of _'},
-        {'prompt': '_ is the spice of life, and so is _'}
+        {'text': 'There is no such thing as _ without _'},
+        {'text': '_ can be achieved only with _'},
+        {'text': 'One cannot _ without a good amount of _'},
+        {'text': '_ is the spice of life, and so is _'}
     ]
     philisophical_prompts = [
         {'prompt': 'What do you call a _ without a _? a _'},
@@ -24,11 +26,11 @@ def populate():
         {'prompt': 'What does the _ say to the _? You are a _'},
         {'prompt': 'Did you hear about the _ who ran into the _? He _'}
     ]
-    comedic_noun = [
-        {'noun': 'chicken'},
-        {'noun': 'cow'},
-        {'noun': 'egg'},
-        {'noun': 'jimmy carr'}
+    comedic_nouns = [
+        'chicken',
+        'cow',
+        'egg',
+        'jimmy carr'
     ]
 
     inspiring_pages = [
@@ -58,8 +60,10 @@ def populate():
         for p in Page.objects.filter(category=c):
             print(f'- {c}: {p}')
 
-    # for prompt in comedic_prompts.items():
-    #      cp = add_comedic_prompt(prompt)
+    for i in comedic_prompts:
+        cp = add_comedic_prompt(i)
+    for i in comedic_nouns:
+        cp = add_comedic_noun(i)
 
 def add_cat(name, views, likes):
     c = Category.objects.get_or_create(name=name, views=views, likes=likes)[0]
@@ -74,10 +78,15 @@ def add_page(cat, title, url, views, likes):
     p.save()
     return p
 
-# def add_comedic_prompt(prompt):
-#     cp = Category.objects.get_or_create(prompt=prompt)[0]
-#     cp.save()
-#     return cp
+def add_comedic_prompt(prompt):
+    cp = Prompt.objects.get_or_create(text=prompt)[0]
+    cp.save()
+    return cp
+
+def add_comedic_noun(noun):
+    cn = Noun.objects.get_or_create(text=noun)[0]
+    cn.save()
+    return cn
 
 if __name__ == '__main__':
     print('Starting QuotePT109 population script...')

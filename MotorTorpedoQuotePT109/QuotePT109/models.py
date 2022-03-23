@@ -5,9 +5,14 @@ import random
 
 # Create your models here.
 class Prompt(models.Model):
-    prompt = models.CharField(max_length=128, unique=True)
+    text = models.CharField(max_length=128, unique=True)
     def __str__(self):
-        return self.prompt
+        return self.text
+
+class Noun(models.Model):
+    text = models.CharField(max_length=128, unique=True)
+    def __str__(self):
+        return self.text
 
 class Category(models.Model):
     name = models.CharField(max_length=128, unique=True)
