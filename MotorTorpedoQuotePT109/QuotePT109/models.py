@@ -45,3 +45,13 @@ class QuoteImage(models.Model):
         x = random.randint(1,10)
         return("/media/comedic/"+str(x)+".jpg")
     url = pickImage()
+
+class Quote(models.Model):
+    def generateQuote():
+        prompt = Prompt.objects.filter()[random.randint(0,4)]
+        x = str(Noun.objects.filter()[random.randint(0,11)])
+        y = str(Noun.objects.filter()[random.randint(0,11)])
+        z = str(Noun.objects.filter()[random.randint(0,11)])
+        splitPrompt = str(prompt).split("_")
+        return (splitPrompt[0]+x+splitPrompt[1]+y+splitPrompt[2]+z)
+    quote = generateQuote

@@ -11,8 +11,9 @@ def populate():
     comedic_prompts = [
         'What do you call a _ without a _? a _',
         'How many _ does it take to fix a _? _',
-        'What does the _ say to the _? You are a _',
-        'Did you hear about the _ who ran into the _? He _'
+        'What did the _ say to the _? You are a _',
+        'Did you hear about the _ who ran into the _? He _',
+        'What does a _ and a _ have in common? They both eat _s'
     ]
     inspiring_prompts = [
         {'text': 'There is no such thing as _ without _'},
@@ -26,11 +27,8 @@ def populate():
         {'prompt': 'What does the _ say to the _? You are a _'},
         {'prompt': 'Did you hear about the _ who ran into the _? He _'}
     ]
-    comedic_nouns = [
-        'chicken',
-        'cow',
-        'egg',
-        'jimmy carr'
+    comedic_nouns = ['chicken','cow','egg','jimmy carr','rango enjoyer','django programmer','maths student',
+        'auroch','englishman','manchester united fan','officer of the law','the good the bad and the ugly fan'
     ]
 
     inspiring_pages = [
