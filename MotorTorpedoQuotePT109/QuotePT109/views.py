@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from QuotePT109.models import Category, Page
+from QuotePT109.models import Category, Page, QuoteImage
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     page_list_likes = Page.objects.order_by('-likes')[:5]
@@ -27,7 +27,8 @@ def preGenerator(request):
     return response
 
 def generated(request):
-    response = render(request, 'QuotePT109/generated.html')
-    return response
+    context_dict={}
+    context_dict['image'] = QuoteImage.url
+    return render(request, 'QuotePT109/generated.html', context=context_dict)
 
 # Create your views here.

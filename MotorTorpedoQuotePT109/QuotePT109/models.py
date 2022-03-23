@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+import random
 
 # Create your models here.
 class Prompt(models.Model):
@@ -33,3 +34,9 @@ class Page(models.Model):
 
     def __str__(self):
         return self.title
+
+class QuoteImage(models.Model):
+    def pickImage():
+        x = random.randint(1,10)
+        return("/media/comedic/"+str(x)+".jpg")
+    url = pickImage()
