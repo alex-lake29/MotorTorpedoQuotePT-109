@@ -15,9 +15,12 @@
 		position:relative;
 		}
 </style>
+
 <div style="margin-left:auto;margin-right:auto;width:500px">
 	<h1 style="color:rgb(255, 255, 255)"> Comedic Joke </h1>
-	<img src=" {{ image }}" style="width:500px;height:500px;">
-	<p style="color:rgb(0, 0, 0);font-size:20;">{{ quote }}</p>
+	<img id="picture" src=" {{ image }}" style="display: none;">
+	<p id="quote" style="display: none;">{{ quote }}</p>
+	<canvas id="canvas" width="500" height="500" style="background-color:#333"></canvas>
+	<script src="/static/write.js"></script>
 </div>
 <a href="{% url 'QuotePT109:generator' %}" style="position:absolute;bottom:0px;width:4%;margin-left:48%;"><button type="button" style=";outline:none">Go Back</button></a><br />

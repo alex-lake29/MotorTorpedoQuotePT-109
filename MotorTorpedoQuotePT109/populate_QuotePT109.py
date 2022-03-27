@@ -9,11 +9,11 @@ from QuotePT109.models import Prompt, Page, Category, Noun
 
 def populate():
     comedic_prompts = [
-        'What do you call a _ without a _? a _',
-        'How many _ does it take to fix a _? _',
-        'What did the _ say to the _? You are a _',
-        'Did you hear about the _ who ran into the _? He _',
-        'What does a _ and a _ have in common? They both eat _s'
+        'What do you call a _ /without a _? /a _',
+        'How many _ /does it take to fix a _? /_',
+        'What did the _ /say to the _? /You are a _',
+        'Did you hear about the _ /who ran into the _? /He _',
+        'What does a _ /and a _ have in common? /They both eat _s'
     ]
     inspiring_prompts = [
         {'text': 'There is no such thing as _ without _'},
