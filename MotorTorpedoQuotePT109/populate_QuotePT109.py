@@ -8,27 +8,22 @@ django.setup()
 from QuotePT109.models import Prompt, Page, Category, Noun
 
 def populate():
-    comedic_prompts = [
-        'What do you call a _ /without a _? /a _',
-        'How many _ /does it take to fix a _? /_',
-        'What did the _ /say to the _? /You are a _',
-        'Did you hear about the _ /who ran into the _? /He _',
-        'What does a _ /and a _ have in common? /They both eat _s'
+    prompts = [
+        'c:What do you call a _/without a _?/a _',
+        'c:How many _/does it take to fix a _? /_',
+        'c:What did the _/say to the _?/You are a _',
+        'c:Did you hear about the _ /who ran into the _? /He _',
+        'c:What does a _/and a _ have in common?/They both eat _s',
+        'i:_ is/_ with extra/_',
+        'i:_ can be achieved/only with _/ and_',
+        'i:_ is not about _/Its about/_',
+        'i:_ cannot exist without _/which cannot exist/without _',
+        'i:with_/_ and _/You can do anything!',
     ]
-    inspiring_prompts = [
-        {'text': 'There is no such thing as _ without _'},
-        {'text': '_ can be achieved only with _'},
-        {'text': 'One cannot _ without a good amount of _'},
-        {'text': '_ is the spice of life, and so is _'}
-    ]
-    philisophical_prompts = [
-        {'prompt': 'What do you call a _ without a _? a _'},
-        {'prompt': 'How many _ does it take to fix a _? _'},
-        {'prompt': 'What does the _ say to the _? You are a _'},
-        {'prompt': 'Did you hear about the _ who ran into the _? He _'}
-    ]
-    comedic_nouns = ['chicken','cow','egg','jimmy carr','rango enjoyer','django programmer','maths student',
-        'auroch','englishman','manchester united fan','officer of the law','the good the bad and the ugly fan'
+
+    nouns = ['c:chicken','c:cow','c:egg','c:jimmy carr','c:rango enjoyer','c:django programmer','c:maths student',
+        'c:auroch','c:englishman','c:manchester united fan','c:officer of the law','c:james may', 'i:hard work',
+        'i:dedication','i:perseverance','i:the grindset','i:success','i:excellence','i:inspiration',
     ]
 
     inspiring_pages = [
@@ -54,10 +49,10 @@ def populate():
         for p in cat_data['pages']:
             add_page(c, p['title'], p['url'], p['views'], p['likes'])
 
-    for i in comedic_prompts:
-        cp = add_comedic_prompt(i)
-    for i in comedic_nouns:
-        cp = add_comedic_noun(i)
+    for i in prompts:
+        cp = add_prompt(i)
+    for i in nouns:
+        cp = add_noun(i)
 
 def add_cat(name, views, likes):
     c = Category.objects.get_or_create(name=name, views=views, likes=likes)[0]
@@ -72,12 +67,12 @@ def add_page(cat, title, url, views, likes):
     p.save()
     return p
 
-def add_comedic_prompt(prompt):
+def add_prompt(prompt):
     cp = Prompt.objects.get_or_create(text=prompt)[0]
     cp.save()
     return cp
 
-def add_comedic_noun(noun):
+def add_noun(noun):
     cn = Noun.objects.get_or_create(text=noun)[0]
     cn.save()
     return cn

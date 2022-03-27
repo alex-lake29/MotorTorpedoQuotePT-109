@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from QuotePT109.models import Category, Page, QuoteImage, Quote
+from QuotePT109.models import Category, Page, ComedicQuoteImage, ComedicQuote
 from QuotePT109.forms import UploadForm
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
@@ -30,6 +30,6 @@ def preGenerator(request):
 
 def generated(request):
     context_dict={}
-    context_dict['image'] = QuoteImage.url
-    context_dict['quote'] = Quote.quote
+    context_dict['image'] = ComedicQuoteImage.url
+    context_dict['quote'] = ComedicQuote.quote
     return render(request, 'QuotePT109/generated.html', context=context_dict)

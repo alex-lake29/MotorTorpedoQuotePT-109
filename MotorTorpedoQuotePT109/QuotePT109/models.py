@@ -40,21 +40,39 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
-class QuoteImage(models.Model):
+class ComedicQuoteImage(models.Model):
     def pickImage():
         x = random.randint(1,10)
         return("/media/comedic/"+str(x)+".jpg")
-    url = pickImage()
+    url = pickImage
 
-class Quote(models.Model):
-    def generateQuote():
-        prompt = Prompt.objects.filter()[random.randint(0,4)]
-        x = str(Noun.objects.filter()[random.randint(0,11)])
-        y = str(Noun.objects.filter()[random.randint(0,11)])
-        z = str(Noun.objects.filter()[random.randint(0,11)])
+def generateQuote(type):
+        allPrompts = Prompt.objects.filter()
+        prompts=[]
+        for i in range (len(allPrompts)):
+            x = str(allPrompts[i]).split(":")
+            if x[0] == type:
+                prompts.append(x[1])
+        allNouns = Noun.objects.filter()
+        nouns=[]
+        for j in range (len(allNouns)):
+            y = str(allNouns[j]).split(":")
+            print(y[0])
+            if y[0] == type:
+                nouns.append(y[1])
+        print(len(nouns)-1)
+        prompt = prompts[random.randint(0,len(prompts)-1)]
+        a = nouns[random.randint(0,len(nouns)-1)]
+        b = nouns[random.randint(0,len(nouns)-1)]
+        c = nouns[random.randint(0,len(nouns)-1)]
         splitPrompt = str(prompt).split("_")
-        return (splitPrompt[0]+x+splitPrompt[1]+y+splitPrompt[2]+z)
-    quote = generateQuote
+        return (splitPrompt[0]+a+splitPrompt[1]+b+splitPrompt[2]+c)
+
+class ComedicQuote(models.Model):
+    quote = generateQuote("c")
+
+# class Quote(models.Model):
+#     quote = generateQuote("i")
 
 class FinishedQuote(models.Model):
     image = models.ImageField(upload_to='static/FinishedQuotes/')
