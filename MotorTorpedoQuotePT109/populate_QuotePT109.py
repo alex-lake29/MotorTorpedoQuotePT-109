@@ -53,10 +53,6 @@ def populate():
         c = add_cat(cat, cat_data['views'], cat_data['likes'])
         for p in cat_data['pages']:
             add_page(c, p['title'], p['url'], p['views'], p['likes'])
-        
-    for c in Category.objects.all():
-        for p in Page.objects.filter(category=c):
-            print(f'- {c}: {p}')
 
     for i in comedic_prompts:
         cp = add_comedic_prompt(i)
