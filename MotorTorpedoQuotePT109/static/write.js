@@ -16,3 +16,5 @@ ctx.strokeText(textArray[1], 250, 80);
 ctx.font = "35pt Calibri";
 ctx.fillText(textArray[2], 250, 470);
 ctx.strokeText(textArray[2], 250, 470);
+const imageURI = canvas.toDataURL("image/jpeg");
+imageConverted.src = imageURI;

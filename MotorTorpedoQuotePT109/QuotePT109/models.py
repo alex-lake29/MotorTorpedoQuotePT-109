@@ -55,3 +55,7 @@ class Quote(models.Model):
         splitPrompt = str(prompt).split("_")
         return (splitPrompt[0]+x+splitPrompt[1]+y+splitPrompt[2]+z)
     quote = generateQuote
+
+class FinishedQuote(models.Model):
+    image = models.ImageField(upload_to='static/FinishedQuotes/')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)

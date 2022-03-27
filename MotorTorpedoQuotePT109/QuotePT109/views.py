@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from QuotePT109.models import Category, Page, QuoteImage, Quote
+from QuotePT109.forms import UploadForm
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     page_list_likes = Page.objects.order_by('-likes')[:5]
@@ -15,7 +16,8 @@ def generator(request):
     return response
 
 def generatorC(request):
-    response = render(request, 'QuotePT109/generatorC.html')
+    form = UploadForm(request.POST, request.FILES)
+    response = render(request, 'QuotePT109/generatorC.html', {'form' : form})
     return response
 
 def login(request):
@@ -31,5 +33,3 @@ def generated(request):
     context_dict['image'] = QuoteImage.url
     context_dict['quote'] = Quote.quote
     return render(request, 'QuotePT109/generated.html', context=context_dict)
-
-# Create your views here.

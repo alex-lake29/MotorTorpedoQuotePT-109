@@ -21,9 +21,11 @@
 	<img id="picture" src=" {{ image }}" style="display: none;">
 	<img id="imageConverted" src="imageConverted">
 	<p id="quote" style="display: none;">{{ quote }}</p>
-	<canvas id="canvas" width="500" height="500" style="background-color:#333"></canvas>
+	<canvas id="canvas" width="500" height="500" style="display: none;"></canvas>
 	<script src="/static/write.js"></script>
+
 </div>
-<a href="{% url 'QuotePT109:generator' %}" style="position:absolute;bottom:0px;width:4%;margin-left:50%;"><button type="button" style=";outline:none">Go Back</button></a><br />
-<a style="position:absolute;bottom:0px;width:4%;margin-left:45%;"><button id="downloader" type="button" style=";outline:none">Save Image</button></a><br />
+<a href="{% url 'QuotePT109:generator' %}" style="position:absolute;bottom:0px;width:4%;margin-left:56%;"><button type="button" style=";outline:none">Go Back</button></a><br />
+<a style="position:absolute;bottom:0px;width:4%;margin-left:42%;"><button id="downloader" type="button" style=";outline:none">Save Image</button></a><br />
+<a style="position:absolute;bottom:0px;width:4%;margin-left:49%;"><button id="uploader" type="button" style=";outline:none">Upload to Gallery</button></a><br />
 <script src="/static/downloadImage.js"></script>
