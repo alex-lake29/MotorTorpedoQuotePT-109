@@ -15,15 +15,18 @@ def populate():
         'c:Did you hear about the _ /who ran into the _? /He _',
         'c:What does a _/and a _ have in common?/They both eat _s',
         'i:_ is/_ with extra/_',
-        'i:_ can be achieved/only with _/ and_',
-        'i:_ is not about _/Its about/_',
+        'i:_ can be achieved/only with _/and _',
+        'i:_ is not about/_, Its about/_',
         'i:_ cannot exist without _/which cannot exist/without _',
-        'i:with_/_ and _/You can do anything!',
+        'i:with _/_ and _/You can do anything!',
+        'p:To engage in_/is equal to _/to those who are _',
+        'p:To engage in _/or to engage in _?/Are they both not _?'
     ]
 
     nouns = ['c:chicken','c:cow','c:egg','c:jimmy carr','c:rango enjoyer','c:django programmer','c:maths student',
-        'c:auroch','c:englishman','c:manchester united fan','c:officer of the law','c:james may', 'i:hard work',
-        'i:dedication','i:perseverance','i:the grindset','i:success','i:excellence','i:inspiration',
+        'c:auroch','c:englishman','c:manchester united fan','c:officer of the law','c:james may', 'i:Hard Work',
+        'i:Dedication','i:Perseverance','i:The Grindset','i:Success','i:Excellence','i:Inspiration',
+        'p:Pondering','p:Questioning','p:Believing','p:Thinking','p:Wandering ones lands','p:seek salvation','p:Pondering the orb',
     ]
 
     inspiring_pages = [

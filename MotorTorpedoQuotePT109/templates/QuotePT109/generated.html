@@ -1,7 +1,7 @@
 {% load staticfiles %} 
 <style>	
 	body{
-		background-image:url("/static/stage.jpg");height:100%;
+		background-image:url("{{ background }}");height:100%;
 		background-position:center;background-repeat:no-repeat;background-size:cover;
 		font-family:calibri;
 	}
@@ -17,7 +17,7 @@
 </style>
 
 <div style="margin-left:auto;margin-right:auto;width:500px">
-	<h1 style="color:rgb(255, 255, 255)"> Comedic Joke </h1>
+	<h1 style="color:rgb(255, 255, 255)"> {{ title }} </h1>
 	<img id="picture" src=" {{ image }}" style="display: none;">
 	<img id="imageConverted" src="imageConverted">
 	<p id="quote" style="display: none;">{{ quote }}</p>

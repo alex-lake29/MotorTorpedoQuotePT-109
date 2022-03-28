@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from QuotePT109.models import Category, Page, ComedicQuoteImage, ComedicQuote
-from QuotePT109.forms import UploadForm
+from QuotePT109.models import Category, Page, ComedicQuoteImage, ComedicQuote, InspiringQuoteImage, InspiringQuote, PhilisophicalQuote, PhilisophicalQuoteImage
+# from QuotePT109.forms import UploadForm
 def index(request):
     category_list = Category.objects.order_by('-likes')[:5]
     page_list_likes = Page.objects.order_by('-likes')[:5]
@@ -15,11 +15,6 @@ def generator(request):
     response = render(request, 'QuotePT109/generator.html')
     return response
 
-def generatorC(request):
-    form = UploadForm(request.POST, request.FILES)
-    response = render(request, 'QuotePT109/generatorC.html', {'form' : form})
-    return response
-
 def login(request):
     response = render(request, 'QuotePT109/login.html')
     return response
@@ -28,8 +23,26 @@ def preGenerator(request):
     response = render(request, 'QuotePT109/preGenerate.html')
     return response
 
-def generated(request):
+def comedicGenerated(request):
     context_dict={}
     context_dict['image'] = ComedicQuoteImage.url
     context_dict['quote'] = ComedicQuote.quote
-    return render(request, 'QuotePT109/generated.html', context=context_dict)
+    context_dict['background'] = "/static/stage.jpg"
+    context_dict['title'] = "Comedic Joke"
+    return render(request, 'QuotePT109/Generated.html', context=context_dict)
+
+def inspirationalGenerated(request):
+    context_dict={}
+    context_dict['image'] = InspiringQuoteImage.url
+    context_dict['quote'] = InspiringQuote.quote
+    context_dict['background'] = "/static/peaks.jpg"
+    context_dict['title'] = "Beautiful Quote"
+    return render(request, 'QuotePT109/Generated.html', context=context_dict)
+
+def philisophicalGenerated(request):
+    context_dict={}
+    context_dict['image'] = PhilisophicalQuoteImage.url
+    context_dict['quote'] = PhilisophicalQuote.quote
+    context_dict['background'] = "/static/greeks.jpg"
+    context_dict['title'] = "Philisophical Quote"
+    return render(request, 'QuotePT109/Generated.html', context=context_dict)

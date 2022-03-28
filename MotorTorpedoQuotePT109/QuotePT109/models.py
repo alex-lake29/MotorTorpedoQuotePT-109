@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
+# from populate_QuotePT109 import populate
 import random
 
 # Create your models here.
@@ -44,36 +45,45 @@ class ComedicQuoteImage(models.Model):
     def pickImage():
         x = random.randint(1,10)
         return("/media/comedic/"+str(x)+".jpg")
-    url = pickImage
+    url = pickImage()
 
-def generateQuote(type):
+class InspiringQuoteImage(models.Model):
+    def pickImage():
+        x = random.randint(1,10)
+        return("/media/inspiring/"+str(x)+".jpg")
+    url = pickImage()
+
+class PhilisophicalQuoteImage(models.Model):
+    def pickImage():
+        x = random.randint(1,10)
+        return("/media/philisophical/"+str(x)+".jpg")
+    url = pickImage()
+
+class ComedicQuote(models.Model):
+    def generateQuote(type):
         allPrompts = Prompt.objects.filter()
-        prompts=[]
+        promptList=[]
+        print("hello")
         for i in range (len(allPrompts)):
             x = str(allPrompts[i]).split(":")
             if x[0] == type:
-                prompts.append(x[1])
+                promptList.append(x[1])
         allNouns = Noun.objects.filter()
-        nouns=[]
+        nounList=[]
         for j in range (len(allNouns)):
             y = str(allNouns[j]).split(":")
-            print(y[0])
             if y[0] == type:
-                nouns.append(y[1])
-        print(len(nouns)-1)
-        prompt = prompts[random.randint(0,len(prompts)-1)]
-        a = nouns[random.randint(0,len(nouns)-1)]
-        b = nouns[random.randint(0,len(nouns)-1)]
-        c = nouns[random.randint(0,len(nouns)-1)]
+                nounList.append(y[1])
+        prompt = promptList[random.randint(0,len(promptList)-1)]
+        a = nounList[random.randint(0,len(nounList)-1)]
+        b = nounList[random.randint(0,len(nounList)-1)]
+        c = nounList[random.randint(0,len(nounList)-1)]
         splitPrompt = str(prompt).split("_")
         return (splitPrompt[0]+a+splitPrompt[1]+b+splitPrompt[2]+c)
-
-class ComedicQuote(models.Model):
     quote = generateQuote("c")
 
-# class Quote(models.Model):
-#     quote = generateQuote("i")
+class InspiringQuote(models.Model):
+    quote = ComedicQuote.generateQuote("i")
 
-class FinishedQuote(models.Model):
-    image = models.ImageField(upload_to='static/FinishedQuotes/')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+class PhilisophicalQuote(models.Model):
+    quote = ComedicQuote.generateQuote("i")
