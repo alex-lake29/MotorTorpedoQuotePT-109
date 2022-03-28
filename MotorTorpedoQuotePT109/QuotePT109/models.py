@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 import random
 
 # Create your models here.
-class Prompt(models.Model):
-    text = models.CharField(max_length=128, unique=True)
-    def __str__(self):
-        return self.text
+# class Prompt(models.Model):
+#     text = models.CharField(max_length=128, unique=True)
+#     def __str__(self):
+#         return self.text
 
 class Noun(models.Model):
     text = models.CharField(max_length=128, unique=True)
@@ -45,45 +45,77 @@ class ComedicQuoteImage(models.Model):
     def pickImage():
         x = random.randint(1,10)
         return("/media/comedic/"+str(x)+".jpg")
-    url = pickImage()
+    url = pickImage
 
 class InspiringQuoteImage(models.Model):
     def pickImage():
         x = random.randint(1,10)
         return("/media/inspiring/"+str(x)+".jpg")
-    url = pickImage()
+    url = pickImage
 
 class PhilisophicalQuoteImage(models.Model):
     def pickImage():
         x = random.randint(1,10)
         return("/media/philisophical/"+str(x)+".jpg")
-    url = pickImage()
+    url = pickImage
+
+class ComedicPrompt(models.Model):
+    text = models.CharField(max_length=128, unique=True)
+    def __str__(self):
+        return self.text
+
+class InspiringPrompt(models.Model):
+    text = models.CharField(max_length=128, unique=True)
+    def __str__(self):
+        return self.text
+
+class PhilisophicalPrompt(models.Model):
+    text = models.CharField(max_length=128, unique=True)
+    def __str__(self):
+        return self.text
+
+class ComedicNoun(models.Model):
+    text = models.CharField(max_length=128, unique=True)
+    def __str__(self):
+        return self.text
+
+class InspiringNoun(models.Model):
+    text = models.CharField(max_length=128, unique=True)
+    def __str__(self):
+        return self.text
+    
+class PhilisophicalNoun(models.Model):
+    text = models.CharField(max_length=128, unique=True)
+    def __str__(self):
+        return self.text
 
 class ComedicQuote(models.Model):
-    def generateQuote(type):
-        allPrompts = Prompt.objects.filter()
-        promptList=[]
-        print("hello")
-        for i in range (len(allPrompts)):
-            x = str(allPrompts[i]).split(":")
-            if x[0] == type:
-                promptList.append(x[1])
-        allNouns = Noun.objects.filter()
-        nounList=[]
-        for j in range (len(allNouns)):
-            y = str(allNouns[j]).split(":")
-            if y[0] == type:
-                nounList.append(y[1])
-        prompt = promptList[random.randint(0,len(promptList)-1)]
-        a = nounList[random.randint(0,len(nounList)-1)]
-        b = nounList[random.randint(0,len(nounList)-1)]
-        c = nounList[random.randint(0,len(nounList)-1)]
+    def generateQuote():
+        prompt = ComedicPrompt.objects.filter()[random.randint(0,len(ComedicPrompt.objects.filter())-1)]
+        x = str(ComedicNoun.objects.filter()[random.randint(0,len(ComedicNoun.objects.filter())-1)])
+        y = str(ComedicNoun.objects.filter()[random.randint(0,len(ComedicNoun.objects.filter())-1)])
+        z = str(ComedicNoun.objects.filter()[random.randint(0,len(ComedicNoun.objects.filter())-1)])
         splitPrompt = str(prompt).split("_")
-        return (splitPrompt[0]+a+splitPrompt[1]+b+splitPrompt[2]+c)
-    quote = generateQuote("c")
+        return (splitPrompt[0]+x+splitPrompt[1]+y+splitPrompt[2]+z)
+    quote = generateQuote
 
 class InspiringQuote(models.Model):
-    quote = ComedicQuote.generateQuote("i")
+    def generateQuote():
+        prompt = InspiringPrompt.objects.filter()[random.randint(0,len(InspiringPrompt.objects.filter())-1)]
+        print(prompt)
+        x = str(InspiringNoun.objects.filter()[random.randint(0,len(InspiringNoun.objects.filter())-1)])
+        y = str(InspiringNoun.objects.filter()[random.randint(0,len(InspiringNoun.objects.filter())-1)])
+        z = str(InspiringNoun.objects.filter()[random.randint(0,len(InspiringNoun.objects.filter())-1)])
+        splitPrompt = str(prompt).split("_")
+        return (splitPrompt[0]+x+splitPrompt[1]+y+splitPrompt[2]+z)
+    quote = generateQuote
 
 class PhilisophicalQuote(models.Model):
-    quote = ComedicQuote.generateQuote("p")
+    def generateQuote():
+        prompt = PhilisophicalPrompt.objects.filter()[random.randint(0,len(PhilisophicalPrompt.objects.filter())-1)]
+        x = str(PhilisophicalNoun.objects.filter()[random.randint(0,len(PhilisophicalNoun.objects.filter())-1)])
+        y = str(PhilisophicalNoun.objects.filter()[random.randint(0,len(PhilisophicalNoun.objects.filter())-1)])
+        z = str(PhilisophicalNoun.objects.filter()[random.randint(0,len(PhilisophicalNoun.objects.filter())-1)])
+        splitPrompt = str(prompt).split("_")
+        return (splitPrompt[0]+x+splitPrompt[1]+y+splitPrompt[2]+z)
+    quote = generateQuote

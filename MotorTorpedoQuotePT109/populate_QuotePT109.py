@@ -5,7 +5,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE','MotorTorpedoQuotePT109.settings'
 
 import django
 django.setup()
-from QuotePT109.models import Prompt, Page, Category, Noun
+from QuotePT109.models import Page, Category, Noun, PhilisophicalPrompt, InspiringPrompt, ComedicPrompt, ComedicNoun, InspiringNoun, PhilisophicalNoun
 
 def populate():
     prompts = [
@@ -53,9 +53,21 @@ def populate():
             add_page(c, p['title'], p['url'], p['views'], p['likes'])
 
     for i in prompts:
-        cp = add_prompt(i)
+        splitPrompt = str(i).split(":")
+        if splitPrompt[0] == "c":
+            add_comedic_prompt(splitPrompt[1])
+        elif splitPrompt[0] == "p":
+            add_philisophical_prompt(splitPrompt[1])
+        elif splitPrompt[0] == "i":
+            add_inspiring_prompt(splitPrompt[1])
     for i in nouns:
-        cp = add_noun(i)
+        splitPrompt = str(i).split(":")
+        if splitPrompt[0] == "c":
+            add_comedic_noun(splitPrompt[1])
+        elif splitPrompt[0] == "p":
+            add_philisophical_noun(splitPrompt[1])
+        elif splitPrompt[0] == "i":
+            add_inspiring_noun(splitPrompt[1])
 
 def add_cat(name, views, likes):
     c = Category.objects.get_or_create(name=name, views=views, likes=likes)[0]
@@ -70,16 +82,35 @@ def add_page(cat, title, url, views, likes):
     p.save()
     return p
 
-def add_prompt(prompt):
-    cp = Prompt.objects.get_or_create(text=prompt)[0]
+def add_comedic_prompt(prompt):
+    cp = ComedicPrompt.objects.get_or_create(text=prompt)[0]
     cp.save()
     return cp
 
-def add_noun(noun):
-    cn = Noun.objects.get_or_create(text=noun)[0]
-    cn.save()
-    return cn
+def add_inspiring_prompt(prompt):
+    cp = InspiringPrompt.objects.get_or_create(text=prompt)[0]
+    cp.save()
+    return cp
 
+def add_philisophical_prompt(prompt):
+    cp = PhilisophicalPrompt.objects.get_or_create(text=prompt)[0]
+    cp.save()
+    return cp
+
+def add_comedic_noun(noun):
+    cp = ComedicNoun.objects.get_or_create(text=noun)[0]
+    cp.save()
+    return cp
+
+def add_inspiring_noun(noun):
+    cp = InspiringNoun.objects.get_or_create(text=noun)[0]
+    cp.save()
+    return cp
+
+def add_philisophical_noun(noun):
+    cp = PhilisophicalNoun.objects.get_or_create(text=noun)[0]
+    cp.save()
+    return cp
 if __name__ == '__main__':
     print('Starting QuotePT109 population script...')
     populate()

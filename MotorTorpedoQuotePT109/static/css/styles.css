@@ -8,7 +8,7 @@
 }
 
 li, a, button {
-    font-weight: 100;
+    font-weight: 200;
     font-size: 16px;
     color: #ecf0f1;
     text-decoration: none;
@@ -87,7 +87,7 @@ button {
 }
 
 div{
-    color:#ecf0f1;
+    color:#1a1a1a;
     padding: 10px 20px;
 }
 
@@ -102,8 +102,13 @@ html{
 
 h1 {
     padding: 10px 20px;
-    color:#ecf0f1;
+    color:#1a1a1a;
     font-size: 50px;
+}
+h2 {
+    padding: 10px 20px;
+    color:#1a1a1a;
+    font-size: 20px;
 }
 
 .bh1 {
