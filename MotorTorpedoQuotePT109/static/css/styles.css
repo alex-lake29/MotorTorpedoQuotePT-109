@@ -44,15 +44,55 @@ button {
     background-color: #24252A;
 }
 
-body{
+.home{
     background-image:url("/static/mountain.jpg");height:100%;
 	background-position:center;background-repeat:no-repeat;background-size:cover;
-    min-height: 100%;
-    
+    min-height: 100%; 
+}
+
+.inspiring{
+    background-image:url("/static/peaks.jpg");height:100%;
+	background-position:center;background-repeat:no-repeat;background-size:cover;
+    min-height: 100%; 
+}
+.comedic{
+    background-image:url("/static/stage.jpg");height:100%;
+	background-position:center;background-repeat:no-repeat;background-size:cover;
+    min-height: 100%; 
+}
+.philisophical{
+    background-image:url("/static/greeks.jpg");height:100%;
+	background-position:center;background-repeat:no-repeat;background-size:cover;
+    min-height: 100%; 
+}
+.select{
+    background-image:url("/static/woodland.jpg");height:100%;
+	background-position:center;background-repeat:no-repeat;background-size:cover;
+    min-height: 100%; 
+    color:#111111;
+}
+
+.imageDisplay {
+    position: fixed;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.selectImage {
+    width:200px;
+    height:200px;
+    border: 2px solid #1a1a1a;
 }
 
 div{
     color:#ecf0f1;
+    padding: 10px 20px;
+}
+
+.bdiv{
+    color:#1a1a1a;
     padding: 10px 20px;
 }
 
@@ -63,5 +103,10 @@ html{
 h1 {
     padding: 10px 20px;
     color:#ecf0f1;
+    font-size: 50px;
+}
+
+.bh1 {
+    color:#1a1a1a;
     font-size: 50px;
 }

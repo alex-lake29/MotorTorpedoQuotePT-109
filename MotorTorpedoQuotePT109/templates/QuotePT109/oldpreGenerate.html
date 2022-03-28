@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<style>	
+	body{
+		background-image:url("/static/woodland.jpg");height:100%;
+		background-position:center;background-repeat:no-repeat;background-size:cover;
+		font-family:Calibri;
+	}
+	.image-fix{
+		width:200px;
+		height:200px;
+		display:inline-block;
+		background-position:center;
+		background-repeat:no-repeat;
+		background-size:cover;
+		position:relative;
+		}
+	</style>
+
+    <div style="margin-left:auto;margin-right:auto;width:30%">
+	<h1 style="color:rgb(0, 0, 0);text-align:center">Motor Torpedo Quote PT-109</h1>
+	<h2 style="font-size:16;color:rgb(0, 0, 0);text-align:center">"The UK's most innovative creation tool" - Anonymous Quote</h2>
+	
+	<h3 style="font-size:20;color:rgb(0, 0, 0);text-align:center;">About us</h3>
+	<p style="color:rgb(0, 0, 0);text-align:center;font-family:calibri">We make funny quotes waffle waffle 
+	example example example example example</h3>
+
+</div>
+
+<div style="margin-left:auto;margin-right:auto;width:616px">
+	<a href="{% url 'QuotePT109:generatedComedic' %}">
+		<img src="/static/jimmy.jpg" style="width:200px;height:200px;">
+	</a>
+	
+	<a href="{% url 'QuotePT109:generatedPhilisophical' %}">
+		<img src="/static/ponder.jpg" style="width:200px;height:200px;">
+	</a>
+
+	<a href="{% url 'QuotePT109:generatedInspiring' %}">
+		<img src="/static/inspiration.jpg" style="width:200px;height:200px;"`>
+	</a>
+
+</div>
+<a href="/QuotePT109/" style="position:absolute;bottom:0px;width:4%;margin-left:48%;"><button type="button" style=";outline:none">Go Back</button></a><br />
+<!--<button type="button" href ="/QuotePT109/index/" style="position:absolute;bottom:0px;width:4%;margin-left:48%;">Go back</button>

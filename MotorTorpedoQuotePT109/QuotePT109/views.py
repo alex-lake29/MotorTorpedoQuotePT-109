@@ -9,6 +9,7 @@ def index(request):
     context_dict={}
     context_dict['liked_pages'] = page_list_likes
     context_dict['viewed_pages'] = page_list_views
+    context_dict['class'] = "home"
     return render(request, 'QuotePT109/index.html', context=context_dict)
     
 def generator(request):
@@ -20,14 +21,16 @@ def login(request):
     return response
 
 def preGenerator(request):
-    response = render(request, 'QuotePT109/preGenerate.html')
+    context_dict={}
+    context_dict['class'] = "select"
+    response = render(request, 'QuotePT109/preGenerate.html', context=context_dict)
     return response
 
 def comedicGenerated(request):
     context_dict={}
     context_dict['image'] = ComedicQuoteImage.url
     context_dict['quote'] = ComedicQuote.quote
-    context_dict['background'] = "/static/stage.jpg"
+    context_dict['class'] = "comedic"
     context_dict['title'] = "Comedic Joke"
     return render(request, 'QuotePT109/Generated.html', context=context_dict)
 
@@ -35,7 +38,7 @@ def inspirationalGenerated(request):
     context_dict={}
     context_dict['image'] = InspiringQuoteImage.url
     context_dict['quote'] = InspiringQuote.quote
-    context_dict['background'] = "/static/peaks.jpg"
+    context_dict['class'] = "inspiring"
     context_dict['title'] = "Beautiful Quote"
     return render(request, 'QuotePT109/Generated.html', context=context_dict)
 
@@ -43,6 +46,6 @@ def philisophicalGenerated(request):
     context_dict={}
     context_dict['image'] = PhilisophicalQuoteImage.url
     context_dict['quote'] = PhilisophicalQuote.quote
-    context_dict['background'] = "/static/greeks.jpg"
+    context_dict['class'] = "philisophical"
     context_dict['title'] = "Philisophical Quote"
     return render(request, 'QuotePT109/Generated.html', context=context_dict)
