@@ -1,4 +1,29 @@
-<div>
-	<h1 style="color:white;text-align:center">Motor Torpedo Quote PT-109</h1>
-	<h2 style="font-size:16;color:white;text-align:center">"The UK's most innovative creation tool" - Anonymous Quote</h2>
-</div>
+{% load staticfiles %}
+<!DOCTYPE html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UI-Compatible" content="IE=edge">
+		<title>Motor Torpedo Quote PT109</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><a href="{% url 'QuotePT109:index' %}">Home</a></li>
+					<li><a href="{% url 'QuotePT109:generator' %}">Generator</a></li>
+					<li><a href="{% url 'QuotePT109:login' %}">Login</a></li>
+				</ul>
+			</nav>
+			<a class="cta" href="#"><button>Contact</button></a>
+		</header>
+		<body>
+			<h1>Motor Torpedo Quote PT109</h1>
+			<div>
+				{% block body_block %}
+				{% endblock %}
+			</div>
+		</body>
+	</body>
