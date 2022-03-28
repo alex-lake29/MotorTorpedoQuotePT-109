@@ -86,4 +86,4 @@ class InspiringQuote(models.Model):
     quote = ComedicQuote.generateQuote("i")
 
 class PhilisophicalQuote(models.Model):
-    quote = ComedicQuote.generateQuote("i")
+    quote = ComedicQuote.generateQuote("p")
